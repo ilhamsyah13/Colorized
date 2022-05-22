@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Colorized</title>
+  </head>
+  <body>
+    <h1>AUTOMATIC COLORIZATION</h1>
+    <form action="/" , method="POST" enctype="multipart/form-data">
+      <div class="drop-zone">
+        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+        <input type="file" name="file" class="drop-zone__input" />
+      </div>
+      <input class="button" type="submit" value="COLORIZED" />
+    </form>
+    {% if filename %}
+    <h1>SEBELUM</h1>
+    <div class="image-output">
+      <img src="{{ url_for('static', filename='uploads/'+filename) }}" alt="{{filename}}" />
+    </div>
+    <!-- {% endif %} {% if filename %} -->
+    <h1>SESUDAH</h1>
+    <div class="image-output">
+      <img src="{{ url_for('display_image', filename=filename) }}" alt="{{filename}}" />
+    </div>
+    {% endif %}
+    <form action="{{ url_for('download_file') }}">
+      <input class="button" id="button" type="submit" value="Download" />
+    </form>
+    <script src="/static/script.js"></script>
+  </body>
+</html>
