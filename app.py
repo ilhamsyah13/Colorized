@@ -58,20 +58,20 @@ def start():
     return render_template('input.html')
 
 @app.route('/', methods=['POST'])
-def colorized():
+def input():
     if 'file' not in request.files:
-        flash('No file part')
+        flash('Tidak ada file')
         return redirect(request.url)
     file = request.files['file']
     if file.filename == '':
-        flash('No image selected for uploading')
+        flash('Tidak ada gambar yang dipilih untuk diunggah')
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         extension = os.path.splitext(filename)[1]
         filename = 'awal'+ extension
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash('Image successfully uploaded and displayed below')
+        flash('Gambar berhasil diunggah')
         gambar(filename)
         return render_template('index.html', filename=filename)
     else:
