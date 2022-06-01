@@ -75,7 +75,7 @@ def input():
         gambar(filename)
         return render_template('index.html', filename=filename)
     else:
-        flash('Allowed image types are -> png, jpg, jpeg, gif')
+        flash('Allowed image types are -> png, jpg, jpeg')
         return redirect(request.url)
 
 @app.route('/display/<filename>')
