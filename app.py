@@ -4,7 +4,7 @@ import cv2
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template, send_file
 from werkzeug.utils import secure_filename
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 UPLOAD_FOLDER = './static/uploads/'
 
