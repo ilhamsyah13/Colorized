@@ -18,8 +18,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 proto= "./Notebook/model/colorization_deploy_v2.prototxt"
 model = "./Notebook/model/colorization_release_v2.caffemodel"
 
-net = cv2.dnn.readNetFromCaffe(proto, model)
-
+net = cv2.dnn.readNet(proto, model)
 pts = np.load('./Notebook/model/pts_in_hull.npy')
 
 class8 = net.getLayerId("class8_ab")
