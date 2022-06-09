@@ -2,6 +2,7 @@ from fileinput import filename
 import numpy as np 
 import cv2
 import os
+import wget
 from flask import Flask, flash, request, redirect, url_for, render_template, send_file
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
@@ -15,6 +16,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+
+url = "http://eecs.berkeley.edu/~rich.zhang/projects/2016_colorization/files/demo_v2/colorization_release_v2.caffemodel"
+filename = wget.download(url, out='./models')
 
 args={'prototxt':'models/colorization_deploy_v2.prototxt','model':'models/colorization_release_v2.caffemodel','points':'models/pts_in_hull.npy'}
 net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
