@@ -4,6 +4,7 @@ import cv2
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template, send_file
 from werkzeug.utils import secure_filename
+from gevent.pywsgi import WSGIServer
 app = Flask(__name__, template_folder='templates')
 
 UPLOAD_FOLDER = './static/uploads/'
@@ -15,7 +16,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-args={'prototxt':'./Notebook/model/colorization_deploy_v2.prototxt','model':'./Notebook/model/colorization_release_v2.caffemodel','points':'./Notebook/model/pts_in_hull.npy'}
+args={'prototxt':'models/colorization_deploy_v2.prototxt','model':'models/colorization_release_v2.caffemodel','points':'models/pts_in_hull.npy'}
 net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 pts = np.load(args["points"])
 
@@ -96,4 +97,6 @@ def download_file():
     return send_file(file, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server.serve_forever()
