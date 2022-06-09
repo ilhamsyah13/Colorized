@@ -15,11 +15,9 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-proto= "./Notebook/model/colorization_deploy_v2.prototxt"
-model = "./Notebook/model/colorization_release_v2.caffemodel"
-
-net = cv2.dnn.readNetFromCaffe(proto, model)
-pts = np.load('./Notebook/model/pts_in_hull.npy')
+args={'prototxt':'./Notebook/model/colorization_deploy_v2.prototxt','model':'./Notebook/model/colorization_release_v2.caffemodel','points':'./Notebook/model/pts_in_hull.npy'}
+net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
+pts = np.load(args["points"])
 
 class8 = net.getLayerId("class8_ab")
 conv8 = net.getLayerId("conv8_313_rh")
