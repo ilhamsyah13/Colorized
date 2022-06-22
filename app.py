@@ -20,9 +20,8 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 url = "http://eecs.berkeley.edu/~rich.zhang/projects/2016_colorization/files/demo_v2/colorization_release_v2.caffemodel"
 filename = wget.download(url, out='./models')
 
-args={'prototxt':'models/colorization_deploy_v2.prototxt','model':'models/colorization_release_v2.caffemodel','points':'models/pts_in_hull.npy'}
-net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
-pts = np.load(args["points"])
+net = cv2.dnn.readNetFromCaffe('./models/colorization_deploy_v2.prototxt','./models/colorization_release_v2.caffemodel')
+pts = np.load('./models/pts_in_hull.npy')
 
 class8 = net.getLayerId("class8_ab")
 conv8 = net.getLayerId("conv8_313_rh")
