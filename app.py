@@ -5,7 +5,6 @@ import os
 import wget
 from flask import Flask, flash, request, redirect, url_for, render_template, send_file
 from werkzeug.utils import secure_filename
-from gevent.pywsgi import WSGIServer
 app = Flask(__name__, template_folder='templates')
 
 UPLOAD_FOLDER = './static/uploads/'
@@ -100,6 +99,4 @@ def download_file():
     return send_file(file, as_attachment=True)
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
-    http_server.serve_forever()
+    app.run(debug=True)
