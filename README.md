@@ -15,7 +15,7 @@ Catatan :
 * First request saat membuka website akan memakan waktu yang cukup lama.
 * Paket yang digunakan pada Heroku adalah gratis maka aplikasi akan dalam keadaan "sleep" jika tidak aktif selama 30 menit. 
 
-Referensi
+Referensi :
 @inproceedings{zhang2016colorful,
   title={Colorful Image Colorization},
   author={Zhang, Richard and Isola, Phillip and Efros, Alexei A},
