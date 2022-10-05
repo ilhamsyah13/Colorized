@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/style.css" />
-    <title>Colorized</title>
+    <title>Auto Colorization</title>
   </head>
   <body>
     <h1>AUTOMATIC COLORIZATION</h1>
     <form action="/" , method="POST" enctype="multipart/form-data">
-      <div class="drop-zone">
-        <span class="drop-zone__prompt">Klik atau Jatuhkan File Anda Di sini</span>
-        <input type="file" name="file" class="drop-zone__input" />
+      {% for message in get_flashed_messages() %}
+      <div class="alert">{{ message }}</div>
+      {% endfor %}
+      <div class="dropzone">
+        <span class="dropzone-label">Klik atau Jatuhkan File Anda Di sini</span>
+        <input type="file" name="file" class="dropzone-input" />
       </div>
       <input class="button" type="submit" value="COLORIZED" />
     </form>

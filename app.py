@@ -64,22 +64,21 @@ def start():
 @app.route('/', methods=['POST'])
 def input():
     if 'file' not in request.files:
-        flash('Tidak ada file')
+        flash('Tidak Ada File')
         return redirect(request.url)
     file = request.files['file']
     if file.filename == '':
-        flash('Tidak ada gambar yang dipilih untuk diunggah')
+        flash('Tidak Ada Gambar Untuk Diunggah')
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         extension = os.path.splitext(filename)[1]
         filename = 'awal'+ extension
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash('Gambar berhasil diunggah')
         gambar(filename)
         return render_template('index.html', filename=filename)
     else:
-        flash('Allowed image types are -> png, jpg, jpeg')
+        flash('Ekstensi Gambar yang Diperbolehkan Adalah -> png, jpg, jpeg')
         return redirect(request.url)
 
 @app.route('/display/<filename>')
