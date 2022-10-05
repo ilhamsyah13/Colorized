@@ -16,19 +16,6 @@ Catatan :
 * Paket yang digunakan pada Heroku adalah gratis maka aplikasi akan dalam keadaan "sleep" jika tidak aktif selama 30 menit. 
 
 Referensi :
-- @inproceedings{zhang2016colorful,
-  title={Colorful Image Colorization},
-  author={Zhang, Richard and Isola, Phillip and Efros, Alexei A},
-  booktitle={ECCV},
-  year={2016}
-}
+- Zhang, R., Isola, P., & Efros, A. (2016). Colorful Image Colorization. In ECCV.
 
-- @article{zhang2017real,
-  title={Real-Time User-Guided Image Colorization with Learned Deep Priors},
-  author={Zhang, Richard and Zhu, Jun-Yan and Isola, Phillip and Geng, Xinyang and Lin, Angela S and Yu, Tianhe and Efros, Alexei A},
-  journal={ACM Transactions on Graphics (TOG)},
-  volume={9},
-  number={4},
-  year={2017},
-  publisher={ACM}
-}
+- Zhang, R., Zhu, J.Y., Isola, P., Geng, X., Lin, A., Yu, T., & Efros, A. (2017). Real-Time User-Guided Image Colorization with Learned Deep Priors. ACM Transactions on Graphics (TOG), 9(4).
